@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
-
+Disallow: /img/
+Disallow: /styles.css
 Sitemap: https://ai-topsite.ru/sitemap.xml
