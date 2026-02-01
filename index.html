@@ -193,11 +193,8 @@ ym(105220533, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- Header -->
 <header>
 <div class="container header-container">
-<div class="logo">
-  <div class="logo-icon">
-  <i class="fas fa-network-wired"></i>
-</div>
-<span>Ai Topsite</span>
+<div class="logo new_l">
+      <a href=""><img src="./img/logo.jpg" alt=""></a>
 </div>
 <nav>
                 <ul>
@@ -808,12 +805,9 @@ ym(105220533, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 </div>
 <div class="form-group">
 <label class="form-label" for="phone">Телефон</label>
-<input type="tel" id="phone" class="form-input" placeholder="+7 (999) 123-45-67" required>
+<input type="text" id="phone" class="form-input" placeholder="+7 (999) 123-45-67"  required>
 </div>
-<div class="form-group">
-<label class="form-label" for="email">Email</label>
-<input type="email" id="email" class="form-input" placeholder="ivan@example.com" required>
-</div>
+
 <button type="submit" class="btn form-submit">
 <i class="fas fa-paper-plane"></i>
 Отправить заявку
@@ -844,6 +838,14 @@ const selectedTariffInput = document.getElementById('selectedTariff');
 openModalButtons.forEach(button => {
 button.addEventListener('click', (e) => {
 e.preventDefault();
+
+
+const element = document.getElementById('phone');
+console.log(element)
+const maskOptions = {
+  mask: '+{7}(000)000-00-00'
+};
+const mask = IMask(element, maskOptions);
 // Получаем выбранный тариф из data-атрибута
 const tariff = button.getAttribute('data-tariff');
 if (tariff) {
@@ -890,19 +892,23 @@ contactForm.addEventListener('submit', (e) => {
 e.preventDefault();
 const name = document.getElementById('name').value;
 const phone = document.getElementById('phone').value;
-const email = document.getElementById('email').value;
+
 const tariff = selectedTariffInput.value;
 // Здесь можно добавить отправку данных на сервер
-console.log('Данные формы:', { name, phone, email, tariff });
+console.log('Данные формы:', { name, phone ,tariff });
 // Показываем сообщение об успехе
 /*AJAX*/
+
+
+
+
 const token = '8191276293:AAGP7J8ruiVoPinraUoNU0XZDWUhC_Om5L4';
 const chatId = '-5094277455';
 const text =` 
 Заявка с сайта:
 Имя: ${name}
 телефон: ${phone}
-email: ${email}
+
 тариф: ${tariff}        `;
 
 fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -1009,5 +1015,6 @@ document.addEventListener('DOMContentLoaded', createGrowthChart);
 /**/
 
 </script>
+<script src="https://unpkg.com/imask"></script>
 </body>
 </html>

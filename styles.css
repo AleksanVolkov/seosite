@@ -9003,3 +9003,13 @@ display: block;
           text-align: left;
         }
 }
+
+.logo.new_l img{
+  width: 150px;
+  height: 70px;
+  object-position: center;
+}
+.logo.new_l{
+  height: 70px;
+  padding: 0;
+}
